@@ -1,37 +1,32 @@
-import React from 'react';
-import { Navbar, Nav, Container, Button, Card } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchPosts } from './store/postSlice';
 
 function App() {
+  const dispatch = useDispatch();
+
+  // Access state from the Redux store
+  const { posts, loading, error } = useSelector((state) => state.posts);
+
+  // Dispatch fetchPosts when the component mounts
+  useEffect(() => {
+    dispatch(fetchPosts());
+  }, [dispatch]);
+
   return (
-    <div>
-      <Navbar bg="light" expand="lg">
-        <Container>
-          <Navbar.Brand href="#home">React Bootstrap App</Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link href="#link">Link</Nav.Link>
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
-
-      <Container className="mt-5">
-        <h1>Welcome to React Bootstrap</h1>
-        <Button variant="primary">Click Me</Button>
-
-        <Card style={{ width: '18rem', marginTop: '20px' }}>
-          <Card.Body>
-            <Card.Title>Card Title</Card.Title>
-            <Card.Text>
-              This is a simple card using React Bootstrap.
-            </Card.Text>
-            <Button variant="secondary">Go somewhere</Button>
-          </Card.Body>
-        </Card>
-      </Container>
+    <div className="App">
+      <h1>Posts from JSONPlaceholder API</h1>
+      <div className="post-list">
+        {loading && <p>Loading posts...</p>}
+        {error && <p>Error: {error}</p>}
+        {posts.length > 0 &&
+          posts.map((post) => (
+            <div key={post.id} className="post">
+              <h2>{post.title}</h2>
+              <p>{post.body}</p>
+            </div>
+          ))}
+      </div>
     </div>
   );
 }
