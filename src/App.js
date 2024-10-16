@@ -5,6 +5,7 @@ import { Container, Spinner, Alert } from 'react-bootstrap';
 import PostList from './components/PostList';
 import Pagination from './components/Pagination';
 import { useSearchParams } from 'react-router-dom';
+import './App.css';
 
 function App() {
   const dispatch = useDispatch();
@@ -31,6 +32,8 @@ function App() {
   // Handle page change
   const handlePageChange = (pageNumber) => {
     setSearchParams({ page: pageNumber });
+
+    window.scrollTo(0, 0);
   };
 
   // Check if the current page is valid only when posts are fetched
