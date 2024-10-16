@@ -43,6 +43,9 @@ function App() {
     <Container className="my-5">
       <h1 className="text-center mb-5">Posts from JSONPlaceholder API</h1>
 
+      {/* Show current page number */}
+      <h3 className="text-center my-4">Page {currentPage}</h3>
+
       {/* Loading Spinner */}
       {loading && (
         <div className="text-center">
