@@ -1,0 +1,14 @@
+.pagination {
+    margin: 0 auto;
+  }
+  
+  .pagination .page-item {
+    margin: 0 2px; /* Adjusts spacing between pagination items */
+  }
+  
+  @media (max-width: 576px) {
+    .pagination .page-item {
+      margin: 0 1px; /* Reduced margin for mobile */
+    }
+  }
+  
