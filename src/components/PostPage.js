@@ -37,7 +37,14 @@ const PageComponent = () => {
 
   return (
     <div>
-      <h1 className="text-center text-2xl font-bold mb-8">Posts from JSONPlaceholder API</h1>
+      <h1 className="text-center text-2xl font-bold mb-4">Posts from JSONPlaceholder API</h1>
+
+      <div className="text-center mb-4">
+        <strong>{currentPage}</strong>
+        <span className="mx-1">/</span>
+        <span>{totalPages}</span>
+      </div>
+
       {/* Loading Spinner */}
       {loading && (
         <div className="flex justify-center">
