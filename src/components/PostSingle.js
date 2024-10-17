@@ -25,10 +25,10 @@ const SinglePost = () => {
   }
 
   return (
-    <div className="container mx-auto my-8 px-4">
-      <h1 className="text-3xl font-bold mb-4">{post.title}</h1>
-      <p className="text-gray-700">{post.body}</p>
-      <a href="/" className="text-blue-500 underline">Back to Posts</a>
+    <div className="container mx-auto px-4 text-center">
+      <h1 className="text-2xl font-bold mb-8">{post.title}</h1>
+      <p className="text-gray-700 mb-6">{post.body}</p>
+      <a href="/" className={`px-3 py-2 bg-gray-200 rounded hover:bg-gray-300`}>Back to Posts</a>
     </div>
   );
 };
