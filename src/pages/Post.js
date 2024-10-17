@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchPosts } from '../store/postSlice';
 
@@ -28,7 +28,7 @@ const SinglePost = () => {
     <div className="container mx-auto px-4 text-center">
       <h1 className="text-2xl font-bold mb-8">{post.title}</h1>
       <p className="text-gray-700 mb-6">{post.body}</p>
-      <a href="/" className={`px-3 py-2 bg-gray-200 rounded hover:bg-gray-300`}>Back to Posts</a>
+      <Link to="/" className={`px-3 py-2 bg-gray-200 rounded hover:bg-gray-300`}>Back to Posts</Link>
     </div>
   );
 };
