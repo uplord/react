@@ -3,7 +3,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
-import { fetchPosts } from '../store/postSlice';
+import { fetchPosts } from '../store/posts';
 import PostList from '../components/PostList';
 import Pagination from '../components/Pagination';
 

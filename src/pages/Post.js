@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchSinglePost } from '../store/postSlice';
+import { fetchSinglePost } from '../store/posts';
 
 const SinglePost = () => {
   const { postId } = useParams(); // Get the postId from the URL
