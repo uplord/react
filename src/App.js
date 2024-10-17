@@ -1,11 +1,9 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchPosts } from './store/postSlice';
-import { Container, Spinner, Alert } from 'react-bootstrap';
-import PostList from './components/PostList';
 import Pagination from './components/Pagination';
+import PostList from './components/PostList';
 import { useSearchParams } from 'react-router-dom';
-import './App.css';
 
 function App() {
   const dispatch = useDispatch();
@@ -32,7 +30,6 @@ function App() {
   // Handle page change
   const handlePageChange = (pageNumber) => {
     setSearchParams({ page: pageNumber });
-
     window.scrollTo(0, 0);
   };
 
@@ -40,29 +37,24 @@ function App() {
   const isPageValid = posts.length > 0 && currentPage <= totalPages && currentPage >= 1;
 
   return (
-    <Container className="my-5">
-      <h1 className="text-center mb-5">Posts from JSONPlaceholder API</h1>
-
-      {/* Show current page number */}
-      <h3 className="text-center my-4">Page {currentPage}</h3>
+    <div className="container mx-auto my-8 px-4">
+      <h1 className="text-center text-2xl font-bold mb-8">Posts from JSONPlaceholder API</h1>
 
       {/* Loading Spinner */}
       {loading && (
-        <div className="text-center">
-          <Spinner animation="border" role="status">
-            <span className="visually-hidden">Loading...</span>
-          </Spinner>
+        <div className="flex justify-center">
+          <div className="w-12 h-12 border-4 border-dashed rounded-full animate-spin"></div>
         </div>
       )}
 
       {/* Error from fetching data */}
-      {error && <p className="text-danger text-center">Error: {error}</p>}
+      {error && <p className="text-red-500 text-center">Error: {error}</p>}
 
-      {/* Invalid page message, only show if posts have been loaded */}
+      {/* Invalid page message */}
       {!isPageValid && posts.length > 0 && (
-        <Alert variant="danger" className="text-center">
+        <div className="text-center text-red-500">
           The page you are trying to access does not exist.
-        </Alert>
+        </div>
       )}
 
       {/* Post list when page is valid */}
@@ -78,7 +70,7 @@ function App() {
           )}
         </>
       )}
-    </Container>
+    </div>
   );
 }
 

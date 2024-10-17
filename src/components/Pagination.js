@@ -1,5 +1,4 @@
 import React from 'react';
-import { Button, ButtonGroup } from 'react-bootstrap';
 
 const Pagination = ({ totalPages, currentPage, handlePageChange }) => {
   const goToFirstPage = () => {
@@ -19,35 +18,49 @@ const Pagination = ({ totalPages, currentPage, handlePageChange }) => {
   };
 
   return (
-    <div className="d-flex justify-content-center align-items-center my-4">
-      <ButtonGroup>
-        {/* First Page Button */}
-        <Button variant="light" onClick={goToFirstPage} disabled={currentPage === 1}>
-          <span>&laquo;</span> {/* Double left chevron */}
-        </Button>
+    <div className="flex justify-center items-center my-4 space-x-2">
+      {/* First Page Button */}
+      <button
+        onClick={goToFirstPage}
+        disabled={currentPage === 1}
+        className={`px-3 py-2 bg-gray-200 rounded ${currentPage === 1 ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-300'}`}
+      >
+        &laquo;
+      </button>
 
-        {/* Previous Page Button */}
-        <Button variant="light" onClick={goToPreviousPage} disabled={currentPage === 1}>
-          <span>&lsaquo;</span> Newer {/* Single left chevron with text */}
-        </Button>
+      {/* Previous Page Button */}
+      <button
+        onClick={goToPreviousPage}
+        disabled={currentPage === 1}
+        className={`px-3 py-2 bg-gray-200 rounded ${currentPage === 1 ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-300'}`}
+      >
+        &lsaquo; Newer
+      </button>
 
-        {/* Current Page / Total Pages */}
-        <div className="d-flex align-items-center mx-3">
-          <strong>{currentPage}</strong>
-          <span className="mx-1">/</span>
-          <span>{totalPages}</span>
-        </div>
+      {/* Current Page / Total Pages */}
+      <div className="px-4 py-2">
+        <strong>{currentPage}</strong>
+        <span className="mx-1">/</span>
+        <span>{totalPages}</span>
+      </div>
 
-        {/* Next Page Button */}
-        <Button variant="light" onClick={goToNextPage} disabled={currentPage === totalPages}>
-          Older <span>&rsaquo;</span> {/* Single right chevron with text */}
-        </Button>
+      {/* Next Page Button */}
+      <button
+        onClick={goToNextPage}
+        disabled={currentPage === totalPages}
+        className={`px-3 py-2 bg-gray-200 rounded ${currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-300'}`}
+      >
+        Older &rsaquo;
+      </button>
 
-        {/* Last Page Button */}
-        <Button variant="light" onClick={goToLastPage} disabled={currentPage === totalPages}>
-          <span>&raquo;</span> {/* Double right chevron */}
-        </Button>
-      </ButtonGroup>
+      {/* Last Page Button */}
+      <button
+        onClick={goToLastPage}
+        disabled={currentPage === totalPages}
+        className={`px-3 py-2 bg-gray-200 rounded ${currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-300'}`}
+      >
+        &raquo;
+      </button>
     </div>
   );
 };

@@ -1,21 +1,15 @@
 import React from 'react';
-import { Row, Col, Card } from 'react-bootstrap';
 
 const PostList = ({ posts }) => {
   return (
-    <Row>
-      {posts.length > 0 &&
-        posts.map((post) => (
-          <Col key={post.id} md={6} className="mb-4">
-            <Card className="h-100">
-              <Card.Body>
-                <Card.Title>{post.title}</Card.Title>
-                <Card.Text>{post.body}</Card.Text>
-              </Card.Body>
-            </Card>
-          </Col>
-        ))}
-    </Row>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {posts.map((post) => (
+        <div key={post.id} className="border p-4 rounded shadow hover:shadow-lg transition-shadow">
+          <h2 className="text-xl font-semibold mb-2">{post.title}</h2>
+          <p className="text-gray-700">{post.body}</p>
+        </div>
+      ))}
+    </div>
   );
 };
 
