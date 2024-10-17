@@ -1,11 +1,13 @@
+// src/pages/PostsPage.js
+
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 import { fetchPosts } from '../store/postSlice';
-import PostList from './PostList';
-import Pagination from './Pagination';
+import PostList from '../components/PostList';
+import Pagination from '../components/Pagination';
 
-const PageComponent = () => {
+const PostsPage = () => {
   const dispatch = useDispatch();
   const { posts, loading, error } = useSelector((state) => state.posts);
 
@@ -79,4 +81,4 @@ const PageComponent = () => {
   );
 };
 
-export default PageComponent;
+export default PostsPage;
